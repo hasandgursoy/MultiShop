@@ -1,18 +1,9 @@
-using MultiShop.Catalog.Extensions;
-using MultiShop.Catalog.Settings;
-using System.Reflection;
+using MultiShop.Order.WebApi.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
-builder.Services.AddCatalogService();
-
-builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
-
-builder.Services.Configure<DatabaseSettings>(builder.Configuration.GetSection("DatabaseSettings"));
-
-
+builder.Services.AddCatalogService(builder.Configuration);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
